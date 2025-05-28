@@ -31,7 +31,6 @@ class Ball:
         self.rect.y += self.vel.y
 
         # Wall collisions
-
         if self.rect.left <= 0 or self.rect.right >= config.WIDTH:
             self.vel.x *= -1
             self.rect.clamp_ip(pygame.Rect(0, 0, config.WIDTH, config.HEIGHT))
@@ -40,7 +39,11 @@ class Ball:
             self.vel.y *= -1
             self.rect.top = 0
 
-        # Paddle collision
+        # Check if ball fell below screen - MOVED THIS CHECK UP
+        if self.rect.top > config.HEIGHT:
+            return 'miss'
+
+        # Paddle collision - only if ball is moving downward and hasn't fallen off screen
         if self.rect.colliderect(paddle.rect) and self.vel.y > 0:
             self.rect.bottom = paddle.rect.top - 1
             self.vel.y *= -1
@@ -55,9 +58,6 @@ class Ball:
             self.vel.y *= -1
             brick.on_destroy()
             return brick
-
-        if self.rect.top > config.HEIGHT:
-            return 'miss'
 
         return None
 

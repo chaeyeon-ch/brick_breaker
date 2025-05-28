@@ -2,7 +2,7 @@ import pygame
 import config
 
 class Paddle:
-    """Player-controlled paddle."""
+    """Player controlled paddle."""
 
     def __init__(self):
         self.rect = pygame.Rect(
@@ -29,5 +29,9 @@ class Paddle:
         if keys[pygame.K_RIGHT]:
             self.move_right()
 
+
     def draw(self, surface):
         pygame.draw.rect(surface, config.WHITE, self.rect)
+
+    def on_hit(self):
+        pass  # Placeholder for hit sound

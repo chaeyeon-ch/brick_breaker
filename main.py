@@ -1,13 +1,14 @@
-import pygame
+
 import sys
-import config
+import pygame
+
 from game_manager import GameManager
+from config import WIDTH, HEIGHT, FPS
 
 
 def main():
     pygame.init()
-    config.init_sounds()
-    screen = pygame.display.set_mode((config.WIDTH, config.HEIGHT))
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
     pygame.display.set_caption("Brick Breaker AI Edition")
     clock = pygame.time.Clock()
 
@@ -19,7 +20,7 @@ def main():
                 running = False
         manager.update()
         manager.draw()
-        clock.tick(config.FPS)
+        clock.tick(FPS)
 
     pygame.quit()
     sys.exit()

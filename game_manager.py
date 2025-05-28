@@ -15,7 +15,6 @@ class GameManager:
         self.score = 0
         self.paddle = Paddle()
         self.ball = Ball(self.paddle)
-
         self.bricks = create_bricks()
 
     def reset(self):
@@ -48,6 +47,7 @@ class GameManager:
                 self.lives -= 1
                 if self.lives > 0:
                     self.ball.reset(self.paddle)
+                    self.state = 'START'  # Return to START state for next ball
                 else:
                     self.state = 'GAME_OVER'
             if not self.bricks:
@@ -70,7 +70,10 @@ class GameManager:
         self.screen.blit(lives_surf, (config.WIDTH - lives_surf.get_width() - 10, 10))
 
         if self.state == 'START':
-            self.draw_text_center("Press SPACE to Start")
+            if self.lives == 3:
+                self.draw_text_center("Press SPACE to Start")
+            else:
+                self.draw_text_center(f"Lives: {self.lives} - Press SPACE to Continue")
         elif self.state == 'GAME_OVER':
             self.draw_text_center("Game Over - Press R to Restart")
         elif self.state == 'VICTORY':

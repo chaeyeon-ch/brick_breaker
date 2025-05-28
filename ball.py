@@ -1,4 +1,5 @@
 import pygame
+
 import config
 
 class Ball:
@@ -30,9 +31,11 @@ class Ball:
         self.rect.y += self.vel.y
 
         # Wall collisions
+
         if self.rect.left <= 0 or self.rect.right >= config.WIDTH:
             self.vel.x *= -1
             self.rect.clamp_ip(pygame.Rect(0, 0, config.WIDTH, config.HEIGHT))
+
         if self.rect.top <= 0:
             self.vel.y *= -1
             self.rect.top = 0

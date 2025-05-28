@@ -1,4 +1,5 @@
 import pygame
+
 import config
 
 class Brick:
@@ -10,6 +11,7 @@ class Brick:
 
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
+
 
     def on_destroy(self):
         pass  # Placeholder for sound or effects

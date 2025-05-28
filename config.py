@@ -1,5 +1,4 @@
 # Game configuration constants
-
 WIDTH, HEIGHT = 800, 600
 FPS = 60
 
@@ -21,10 +20,12 @@ BRICK_COLS = 10
 BRICK_WIDTH = 60
 BRICK_HEIGHT = 20
 
+
 # Paddle settings
 PADDLE_WIDTH = 100
 PADDLE_HEIGHT = 15
 PADDLE_SPEED = 7
+
 
 # Ball settings
 BALL_RADIUS = 10

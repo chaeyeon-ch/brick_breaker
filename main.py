@@ -12,7 +12,6 @@ def main():
     clock = pygame.time.Clock()
 
     manager = GameManager(screen)
-
     running = True
     while running:
         for event in pygame.event.get():

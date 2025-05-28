@@ -1,32 +1,30 @@
 import pygame
-import random
-from config import WIDTH, BRICK_ROWS, BRICK_COLS, BRICK_WIDTH, BRICK_HEIGHT, ROW_COLORS
-from powerup import PowerUp
+
+import config
 
 class Brick:
-    """Single brick"""
+    """Single brick that can be destroyed by the ball."""
+
     def __init__(self, x, y, color):
-        self.rect = pygame.Rect(x, y, BRICK_WIDTH, BRICK_HEIGHT)
+        self.rect = pygame.Rect(x, y, config.BRICK_WIDTH, config.BRICK_HEIGHT)
         self.color = color
 
     def draw(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
 
-    def destroy(self):
-        """Return a PowerUp instance with 20% probability."""
-        if random.random() < 0.2:
-            return PowerUp.random(self.rect.centerx, self.rect.centery)
-        return None
+
+    def on_destroy(self):
+        pass  # Placeholder for sound or effects
 
 
 def create_bricks():
     bricks = []
-    start_x = (WIDTH - BRICK_COLS * BRICK_WIDTH) // 2
+    start_x = (config.WIDTH - config.BRICK_COLS * config.BRICK_WIDTH) // 2
     start_y = 50
-    for row in range(BRICK_ROWS):
-        for col in range(BRICK_COLS):
-            x = start_x + col * BRICK_WIDTH
-            y = start_y + row * BRICK_HEIGHT
-            color = ROW_COLORS[row]
+    for row in range(config.BRICK_ROWS):
+        for col in range(config.BRICK_COLS):
+            x = start_x + col * config.BRICK_WIDTH
+            y = start_y + row * config.BRICK_HEIGHT
+            color = config.ROW_COLORS[row % len(config.ROW_COLORS)]
             bricks.append(Brick(x, y, color))
     return bricks

@@ -1,16 +1,17 @@
 import pygame
-from config import WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_SPEED, WHITE
+import config
 
 class Paddle:
-    """Player controlled paddle"""
-    def __init__(self):
-        self.base_width = PADDLE_WIDTH
-        self.rect = pygame.Rect((WIDTH - PADDLE_WIDTH) // 2,
-                                HEIGHT - PADDLE_HEIGHT * 2,
-                                PADDLE_WIDTH,
-                                PADDLE_HEIGHT)
-        self.speed = PADDLE_SPEED
+    """Player controlled paddle."""
 
+    def __init__(self):
+        self.rect = pygame.Rect(
+            (config.WIDTH - config.PADDLE_WIDTH) // 2,
+            config.HEIGHT - config.PADDLE_HEIGHT * 2,
+            config.PADDLE_WIDTH,
+            config.PADDLE_HEIGHT,
+        )
+        self.speed = config.PADDLE_SPEED
     def move_left(self):
         self.rect.x -= self.speed
         if self.rect.left < 0:
@@ -18,8 +19,8 @@ class Paddle:
 
     def move_right(self):
         self.rect.x += self.speed
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
+        if self.rect.right > config.WIDTH:
+            self.rect.right = config.WIDTH
 
     def update(self, keys):
         if keys[pygame.K_LEFT]:
@@ -27,13 +28,9 @@ class Paddle:
         if keys[pygame.K_RIGHT]:
             self.move_right()
 
-    def expand(self):
-        self.rect.width = int(self.base_width * 1.5)
-        if self.rect.right > WIDTH:
-            self.rect.right = WIDTH
-
-    def reset_size(self):
-        self.rect.width = self.base_width
 
     def draw(self, surface):
-        pygame.draw.rect(surface, WHITE, self.rect)
+        pygame.draw.rect(surface, config.WHITE, self.rect)
+
+    def on_hit(self):
+        pass  # Placeholder for hit sound

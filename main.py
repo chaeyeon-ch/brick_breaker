@@ -1,7 +1,8 @@
-import pygame
 import sys
-from config import WIDTH, HEIGHT, FPS
+import pygame
+
 from game_manager import GameManager
+from config import WIDTH, HEIGHT, FPS
 
 
 def main():

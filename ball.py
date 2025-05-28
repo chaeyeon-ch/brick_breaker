@@ -1,5 +1,4 @@
 import pygame
-
 import config
 
 class Ball:
@@ -9,6 +8,7 @@ class Ball:
         self.radius = config.BALL_RADIUS
         self.color = config.RED
         self.reset(paddle)
+
 
     def reset(self, paddle):
         self.rect = pygame.Rect(0, 0, self.radius * 2, self.radius * 2)

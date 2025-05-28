@@ -15,6 +15,7 @@ class GameManager:
         self.score = 0
         self.paddle = Paddle()
         self.ball = Ball(self.paddle)
+
         self.bricks = create_bricks()
 
     def reset(self):

@@ -1,3 +1,4 @@
+
 # Game configuration constants
 WIDTH, HEIGHT = 800, 600
 FPS = 60
@@ -30,6 +31,7 @@ PADDLE_SPEED = 7
 # Ball settings
 BALL_RADIUS = 10
 BALL_SPEED = 5
+
 
 # UI
 FONT_SIZE = 24

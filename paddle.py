@@ -12,6 +12,7 @@ class Paddle:
             config.PADDLE_HEIGHT,
         )
         self.speed = config.PADDLE_SPEED
+
     def move_left(self):
         self.rect.x -= self.speed
         if self.rect.left < 0:

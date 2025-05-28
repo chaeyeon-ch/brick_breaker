@@ -35,3 +35,6 @@ BALL_SPEED = 5
 
 # UI
 FONT_SIZE = 24
+# 파워업 설정 (맨 아래에 추가)
+POWERUP_SPEED = 3
+POWERUP_DROP_CHANCE = 0.3  # 30% 확률로 파워업 드롭
